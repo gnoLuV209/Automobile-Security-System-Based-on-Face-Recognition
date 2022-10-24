@@ -3,7 +3,7 @@ from time import sleep
 import pickle
 import numpy as np
 
-
+##_______________________________________________________________________________##
 def check_time():
     start_time = datetime.datetime.now()
     h = start_time.hour
@@ -14,7 +14,7 @@ def check_time():
     f.write(pickle.dumps(time_2_check))
     f.close()
 
-
+##_______________________________________________________________________________##
 def now():
     current_time = datetime.datetime.now()
     h = current_time.hour
@@ -22,7 +22,7 @@ def now():
     s = current_time.second
     return np.array([h, m, s])
 
-
+##_______________________________________________________________________________##
 def real_time():
     h = now()[0]
     m = now()[1]
@@ -33,6 +33,6 @@ def real_time():
     check = temp - data_time_check
     return np.array([check, temp])
 
-
+##_______________________________________________________________________________##
 if __name__ == "__main__":
     sleep(0.00001)

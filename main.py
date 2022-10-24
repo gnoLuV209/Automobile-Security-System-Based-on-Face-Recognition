@@ -9,8 +9,7 @@ import numpy as np
 import serial
 from time_car_start import check_time, real_time, now
 from detect_location import detect_position
-
-
+##_______________________________________________________________________________##
 # Initialize 'currentname' to trigger only when a new person is identified.
 currentname = "Stranger"
 # Determine faces from encodings.pickle file model created from train_model.py
@@ -26,11 +25,10 @@ print("[INFO] starting video stream…")
 vs = VideoStream(src=0).start()
 # vs = VideoStream(usePiCamera=True).start()
 time.sleep(1.0)
-
 # start the FPS counter
 fps = FPS().start()
 check_time()
-
+##_______________________________________________________________________________##
 # loop over frames from the video file stream
 while True:
     # grab the frame from the threaded video stream and resize it
@@ -47,7 +45,6 @@ while True:
     # compute the facial embeddings for each face bounding box
     encodings = face_recognition.face_encodings(rgb, boxes)
     names = []
-
     # loop over the facial embeddings
     for encoding in encodings:
         # attempt to match each face in the input image to our known
@@ -73,7 +70,6 @@ while True:
             # of votes (note: in the event of an unlikely tie Python
             # will select first entry in the dictionary)
             name = max(counts)
-
             # If someone in your dataset is identified, print their name on the screen
         if currentname != name:
             #Read data from arduino
@@ -115,7 +111,6 @@ while True:
     # display the image to our screen
     cv2.imshow("Facial Recognition is Running", frame)
     key = cv2.waitKey(1) & 0xFF
-
     # quit when 'q' key is pressed
     if key == ord("q"):
         break

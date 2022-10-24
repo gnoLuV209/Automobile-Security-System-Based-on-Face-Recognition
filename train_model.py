@@ -1,5 +1,3 @@
-#! /usr/bin/python
-
 # import the necessary packages
 from imutils import paths
 import face_recognition

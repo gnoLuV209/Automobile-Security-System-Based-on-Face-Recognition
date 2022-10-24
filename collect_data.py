@@ -1,6 +1,6 @@
 import cv2
 
-name = 'Owner'  # replace with your name
+name = 'Owner'  # replace with name's file in dataset
 
 cam = cv2.VideoCapture(0)
 
