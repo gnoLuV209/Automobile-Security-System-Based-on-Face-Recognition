@@ -6,7 +6,7 @@ import pickle
 import time
 import cv2
 import numpy as np
-#import serial
+import serial
 from time_car_start import check_time, real_time, now
 from detect_location import detect_position
 
@@ -15,8 +15,8 @@ from detect_location import detect_position
 currentname = "Stranger"
 # Determine faces from encodings.pickle file model created from train_model.py
 encodingsP = "encodings.pickle"
-# Create interface between arduino and computer
-#arduino = serial.Serial(port='COM3', baudrate=115200, timeout=0.1)
+# Create interface between arduino and computer with COM 3(replace your com)
+arduino = serial.Serial(port='COM3', baudrate=115200, timeout=0.1)
 # load the known faces and embeddings along with OpenCV's Haar
 # cascade for face detection
 print("[INFO] loading encodings + face detector…")
@@ -77,24 +77,23 @@ while True:
             # If someone in your dataset is identified, print their name on the screen
         if currentname != name:
             #Read data from arduino
-            '''return_from_arduino = arduino.readline().decode('utf-8')
+            return_from_arduino = arduino.readline().decode('utf-8')
             if return_from_arduino != 'Complete Engine Start':
                 # Send data to arduino if recognize the face
                 arduino.write(b'Owner')
             else:
                 ardino.write(b'Complete Engine Start')
-                    '''
             currentname = name
             print(currentname)
         else:
-            #arduino.write(b'Stranger')
+            arduino.write(b'Stranger')
             print(currentname)
         # update the list of names
         names.append(name)
     # Check face of driver each 5 minutes
     if check == 300:
         if currentname == 'Stranger':
-            #arduino.write(b'Detect Stranger driving car')
+            arduino.write(b'Detect Stranger driving car')
             location = detect_position()
             img_name = f"data_theft/image_at_{now()[0]}h {now()[1]}m {now()[2]}s.jpg"
             cv2.imwrite(img_name, frame)
