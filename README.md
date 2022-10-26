@@ -15,7 +15,7 @@ STEP 2 : Download some sofware for this project
 + Download the Pycharm sofware for image processing by computer vision
 + Open Command Prompt to install some package for python: type command: pip install cmake, type command: conda install-c menpo opencv, type command: pip install face_recognition, type command: pip install pyserial
 
-STEP 3 : Design model with all components prepared at STEP 1, you can see file "Circuit Diagram with L298.png" and "DesignModel.png" for designing models
+STEP 3 : Design model with all components prepared at STEP 1, you can see file "Circuit_Diagram.png" for designing models
 
 STEP 4 : Run the source code and watch the result  
 + Open Arduino IDE software and copy code in file "Control_Motor_Stater.ino" to your first Arduino IDE program, copy code in file "Control_Bobin.ino" to your second Arduino IDE program
